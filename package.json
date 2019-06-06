@@ -1,14 +1,17 @@
 {
   "name": "optimizely-service",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/optimizelyService.js",
+  "types": "dist/optimizelyService.d.ts",
   "repository": "git@github.com:grug/optimizely-service.git",
-  "author": "Dave Cooper <dave@davecooper.org>",
+  "author": "Dave Cooper <dave.cooper@ovoenergy.com>",
+  "homepage": "https://github.com/ovotech/optimizely-service",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf dist/",
     "test": "jest",
-    "build": "yarn clean && tsc && babel dist/optimizelyService.js --out-file dist/optimizelyService.js && uglifyjs dist/optimizelyService.js -mco dist/optimizelyService.js"
+    "build": "yarn clean && tsc && babel dist/optimizelyService.js --out-file dist/optimizelyService.js",
+    "prepublishOnly": "npm run build"
   },
   "jest": {
     "testRegex": "\\.(test|spec)\\.ts?$",
@@ -25,6 +28,10 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "keywords": [
+    "optimizely",
+    "ab-testing"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
