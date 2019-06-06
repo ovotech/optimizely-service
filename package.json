@@ -1,6 +1,6 @@
 {
   "name": "optimizely-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/optimizelyService.js",
   "types": "dist/optimizelyService.d.ts",
   "repository": "git@github.com:grug/optimizely-service.git",
