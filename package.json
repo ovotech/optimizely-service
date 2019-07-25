@@ -10,8 +10,8 @@
   "scripts": {
     "clean": "rimraf dist/",
     "test": "jest",
-    "build": "yarn clean && tsc && babel dist/optimizelyService.js --out-file dist/optimizelyService.js",
-    "prepublishOnly": "npm run build",
+    "build": "yarn clean && yarn test && tsc && babel dist/optimizelyService.js --out-file dist/optimizelyService.js",
+    "prepublishOnly": "yarn build",
     "publish:patch": "git checkout master && git pull && yarn version --patch && yarn publish --non-interactive && git push",
     "publish:minor": "git checkout master && git pull && yarn version --minor && yarn publish --non-interactive && git push",
     "publish:major": "git checkout master && git pull && yarn version --major && yarn publish --non-interactive && git push"
