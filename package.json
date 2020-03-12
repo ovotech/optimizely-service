@@ -3,6 +3,9 @@
   "version": "1.0.5",
   "main": "dist/optimizelyService.js",
   "types": "dist/optimizelyService.d.ts",
+  "files": [
+    "/dist"
+  ],
   "repository": "git@github.com:grug/optimizely-service.git",
   "author": "Dave Cooper <dave.cooper@ovoenergy.com>",
   "homepage": "https://github.com/ovotech/optimizely-service",
