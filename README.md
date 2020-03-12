@@ -16,37 +16,29 @@ We want to render `ComponentA` if the user is placed in the `Original` bucket, o
 
 The metric we will be tracking is when the component is clicked (we will call this event `Clicked`).
 
-```js
-import React, { Component } from 'react';
+```tsx
+import React, { useState, useEffect } from 'react';
 import optimizelyService from 'optimizely-service';
-
-import { ComponentA } from '../ComponentA';
 import { ComponentB } from '../ComponentB';
+import { ComponentC } from '../ComponentC';
 
-class Foo extends Component {
-  constructor(props) {
-    super(props);
+const ComponentA = () => {
+  const [showComponentB, setShowComponentB] = useState(false);
+  const clickHandler = () => optimizelyService.pushEvent('Clicked');
 
+  useEffect(() => {
     optimizelyService.activatePage('MyPage');
-
-    this.state = {
-      showComponentB: optimizelyService.activeVariationIs(
-        'Experiment A',
-        'Variant'
-      )
-    };
-  }
-
-  handleClick = () => optimizelyService.pushEvent('Clicked');
-
-  render() {
-    return this.state.showComponentB ? (
-      <ComponentB onClick={this.handleClick} />
-    ) : (
-      <ComponentA onClick={this.handleClick} />
+    setShowComponentB(
+      optimizelyService.activeVariationIs('Experiment A', 'Variant')
     );
-  }
-}
+  }, []);
+
+  return showComponentB ? (
+    <ComponentB onClick={clickHandler} />
+  ) : (
+    <ComponentC onClick={clickHandler} />
+  );
+};
 ```
 
 That's it!
